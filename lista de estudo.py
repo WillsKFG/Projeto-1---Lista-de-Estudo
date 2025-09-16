@@ -51,7 +51,7 @@ def menu_um(): #Aqui é a função com o menu da primeira lista de exercício
             [0] - Sair do Programa
             ''')
         
-            menu_escolha = int(input("Digite a opção desejada: "))
+            menu_escolha = int(input("Digite a opção desejada: ")) #aqui será por onde eu escolherei a opção desejada da lista 1
             if menu_escolha == 1:
                 opcao_um_um()
             elif menu_escolha == 2:
