@@ -1,10 +1,4 @@
-#5. Cálculo de Média: 
-#Escreva um programa que solicite ao usuário três notas de um aluno, calcule a 
-#média aritmética e exiba o resultado. 
-#6. Verificação de Par ou Ímpar: 
-#Desenvolva um programa que solicite ao usuário um número inteiro e informe 
-#se ele é par ou ímpar. 
-#7. Cálculo de Fatorial: 
+ #7. Cálculo de Fatorial: 
 #Crie um programa que solicite ao usuário um número inteiro positivo e calcule 
 #o fatorial desse número. 
 #8. Conversão de Horas para Minutos: 
@@ -126,24 +120,31 @@ def menu_dois(): #Aqui é a função com o menu da segunda lista de exercício #
         except ValueError:
             print("Digite um número inteiro!!! ")
 
-
-def opcao_um_um(): #Aqui está a primeira questão da primeira lista
+def opcao_um_um(): #Aqui está a primeira questão da primeira lista #concluída
     limpar_tela()
 
     print('''\t~ Cálculo da Área do Quadrado ~
         ''')
     print("Este programa irá calcular a área do quadrado")
-    lado = float(input("\nDigite o comprimento do lado do quadrado, em metros: "))
-    area = lado**2
-    perimetro = lado * 4
-    print(f"O seu quadrado mede {area:.2f}m² e seu perímetro {perimetro:.2f}\n")
+    while True:
+        try:
+            lado = float(input("\nDigite o comprimento do lado do quadrado, em metros: "))
+            area = lado**2
+            perimetro = lado * 4
+            print(f"O seu quadrado mede {area:.2f}m² e seu perímetro {perimetro:.2f}\n")
+            break
+        except ValueError:
+            limpar_tela()
+            print("\nValor inválido, Digite um número\n")
 
     while True:
             try:
                 escolha_continuar = int(input("Deseja Continuar, Voltar a lista ou Finalizar o programa?\n[1] - Continuar\n[2] - Retornar a Lista\n[3] - Finalizar Programa\n\n-> "))
                 if escolha_continuar == 1:
+                    limpar_tela()
                     opcao_um_um()
                 elif escolha_continuar == 2:
+                    limpar_tela()
                     menu_um()
                 elif escolha_continuar == 3:
                     print("\nFinalizando programa ...\n")
@@ -153,41 +154,60 @@ def opcao_um_um(): #Aqui está a primeira questão da primeira lista
             except ValueError:
                 print("Insira uma entrada válida.")
 
-    
-
-def opcao_um_dois(): #Aqui está a segunda questão da primeira lista
+def opcao_um_dois(): #Aqui está a segunda questão da primeira lista #concluída
     limpar_tela()
 
     print('''\t~ Conversão de Temperatura ~
 Este programa pode converter temperaturas °C, °F e K''')
 
-    unidade_um = ""
-    unidade_dois = ""
-    escolha_um = int(input("\nDeseja Converter qual forma de medida?\n[1] - Celsius(°C)\n[2] - Fahrenheit (°K)\n[3] - Kelvin (K)\n\n --> "))
-    if escolha_um == 1:
-        unidade_um = "Celsius (°C)"
-    elif escolha_um == 2:
-        unidade_um = "Fahrenheit (°F)"
-    elif escolha_um == 3:
-        unidade_um = "Kelvin (K)"
-    else:
-        print("Valor Inválido, tente novamente")
-        opcao_um_dois()
-
-    valor_original = float(input(f"\nInsira seu valor em {unidade_um}: "))
-
-    escolha_dois = int(input("\nDeseja Converter o valor para qual forma de medida?\n[1] - Celsius(°C)\n[2] - Fahrenheit (°K)\n[3] - Kelvin (K)\n\n --> "))
+    while True:
+        unidade_um = ""
+        unidade_dois = ""
+        try:
+            escolha_um = int(input("\nDeseja Converter qual forma de medida?\n[1] - Celsius(°C)\n[2] - Fahrenheit (°K)\n[3] - Kelvin (K)\n\n --> "))
+            if escolha_um == 1:
+                unidade_um = "Celsius (°C)"
+                break
+            elif escolha_um == 2:
+                unidade_um = "Fahrenheit (°F)"
+                break
+            elif escolha_um == 3:
+                unidade_um = "Kelvin (K)"
+                break
+            else:
+                print("\nValor Inválido, tente novamente\n")
+                opcao_um_dois()
+        except ValueError:
+            limpar_tela()
+            print("\nValor Inválido, Insira um número inteiro.\n")
+    while True:
+        try:
+            valor_original = float(input(f"\nInsira seu valor em {unidade_um}: "))
+            break
+        except ValueError:
+            limpar_tela()
+            print("\nValor invalido, tente novamente\n")
     
-    if escolha_dois == 1:
-        unidade_dois = "Celsius (°C)"
-    elif escolha_dois == 2:
-        unidade_dois = "Fahrenheit (°F)"
-    elif escolha_dois == 3:
-        unidade_dois = "Kelvin (K)"
-    else:
-        print("Valor Inválido, tente novamente")
-        return
+    while True:
+        try:
+            escolha_dois = int(input("\nDeseja Converter o valor para qual forma de medida?\n[1] - Celsius(°C)\n[2] - Fahrenheit (°K)\n[3] - Kelvin (K)\n\n --> "))   
+            if escolha_dois == 1:
+                unidade_dois = "Celsius (°C)"
+                break
+            elif escolha_dois == 2:
+                unidade_dois = "Fahrenheit (°F)"
+                break
+                
+            elif escolha_dois == 3:
+                unidade_dois = "Kelvin (K)"
+                break
     
+            else:
+                print("\nValor Inválido, tente novamente\n")
+                return
+        except ValueError:
+            print("\nValor inválido, digite um número inteiro\n")
+         
     cel_fah = (valor_original * (9/5))+32
     cel_kel = (valor_original) + 273.15
     fah_cel = (valor_original - 32)/(9/5)
@@ -220,8 +240,10 @@ Este programa pode converter temperaturas °C, °F e K''')
             try:
                 escolha_continuar = int(input("Deseja Continuar, Voltar a lista ou Finalizar o programa?\n[1] - Continuar\n[2] - Retornar a Lista\n[3] - Finalizar Programa\n\n-> "))
                 if escolha_continuar == 1:
+                    limpar_tela()
                     opcao_um_dois()
                 elif escolha_continuar == 2:
+                    limpar_tela()
                     menu_um()
                 elif escolha_continuar == 3:
                     print("\nFinalizando programa ...\n")
@@ -231,19 +253,55 @@ Este programa pode converter temperaturas °C, °F e K''')
             except ValueError:
                 print("Insira uma entrada válida.")
 
-
-def opcao_um_tres(): #Aqui está a terceira questão da primeira lista
+def opcao_um_tres(): #Aqui está a terceira questão da primeira lista #concluída
     limpar_tela()
     print(f'''\t~ Cálculo de IMC ~
     Este programa irá calcular seu IMC e ranqueará você em:
-    - Abaixo do Peso
-    - Peso Normal
+    - Magreza grave
+    - Magreza moderada
+    - Magreza leve
+    - Saudável
     - Sobrepeso
-    - Obesidade''')
-    peso = float(input("\nDigite seu Peso em Kg: "))
-    altura = float(input("Digite sua altura em Metros: "))
-    imc = peso / altura**2
-    print(f"Seu IMC é: {imc:.2f}")
+    - Obesidade Grau I
+    - Obesidade Grau II (severa)
+    - Obesidade Grau III (mórbida)''')
+    while True:
+        try:
+            peso = float(input("\nDigite seu Peso em Kg: "))
+            print(f"{peso} KGs")
+            break
+        except ValueError:
+            limpar_tela()
+            print("\nValor Inválido, Digite um número\n")
+    while True:
+        try:
+            altura = float(input("Digite sua altura em Metros (utilize . ao invés de ,): "))
+            print(f"{altura:.2f} metros de altura.")
+            break
+        except ValueError:
+            limpar_tela()
+            print("\nValor Inválido, Digite um número\n")
+
+    imc = peso / altura**2  
+    print(f"\nSeu IMC é: {imc:.2f}\n")
+
+    if imc < 16:
+        print("Seu estado é de Magreza grave")
+    elif imc < 17:
+        print("Seu estado é de Magreza moderada")
+    elif imc < 18.5:
+        print("Seu estado é de Magreza leve")
+    elif imc < 25:
+        print("Você está Saudável")
+    elif imc < 30:
+        print("Seu estado é de Sobrepeso")
+    elif imc < 35:
+        print("Seu estado é de Obesidade Grau I")
+    elif imc < 40:
+        print("Seu estado é de Obesidade Grau II (severa)")
+    else:
+        print("Seu estado é de Obesidade Grau III (mórbida)")
+
     while True:
             try:
                 escolha_continuar = int(input("Deseja Continuar, Voltar a lista ou Finalizar o programa?\n[1] - Continuar\n[2] - Retornar a Lista\n[3] - Finalizar Programa\n\n-> "))
@@ -264,43 +322,140 @@ def opcao_um_quatro(): #Aqui está a quarta questão da primeira lista
     print('''\t~ Operações Matemáticas Simples ~
     
 Iremos realizar a soma, subtração, multiplicação e divisão dos dois números que será inserido.''')
-    n1 = float(input("\nDigite o primeiro número: "))
-    n2 = float(input("Digite o segundo número: "))
+    while True:
+        try:
+            n1 = float(input("\nDigite o primeiro número: "))
+            break
+        except ValueError:
+            limpar_tela()
+            print("Valor inválido, digite um número")
+            print(n1)
+    while True:
+        try:
+            n2 = float(input("Digite o segundo número: "))
+            break
+
+        except ValueError:
+            limpar_tela()
+            print("Valor inválido, digite um número")
     print(f"\n {n1} + {n2} = {n1+n2}")
     print(f"{n1} - {n2} = {n1-n2}")
     print(f"{n1} x {n2} = {n1*n2}")
-    print(f"{n1} / {n2} = {n1/n2:.2f}")
+    print(f"{n1} / {n2} = {n1/n2:.2f}\n")
+    while True:
+            try:
+                escolha_continuar = int(input("Deseja Continuar, Voltar a lista ou Finalizar o programa?\n[1] - Continuar\n[2] - Retornar a Lista\n[3] - Finalizar Programa\n\n-> "))
+                if escolha_continuar == 1:
+                    limpar_tela()
+                    opcao_um_quatro()
+                elif escolha_continuar == 2:
+                    limpar_tela()
+                    menu_um()
+                elif escolha_continuar == 3:
+                    print("\nFinalizando programa ...\n")
+                    exit()
+                else:
+                    print("Opção Inválida, Tente Novamente")
+            except ValueError:
+                print("Insira uma entrada válida.")
 
 def opcao_um_cinco(): #Aqui está a quinta questão da primeira lista
     limpar_tela()
     print('''\t~ Média Aritmética ~
     
-Este programa irá calcular a média aritmética simples de 3 notas.''')
-    celsius = float(input("Insira a tempera em °C a ser convertida: "))
-    fahrenheit = (celsius * 9/5) + 32
-    print(f"\n {celsius:.2f}°C em Fahrenheit é {fahrenheit:.2f}.\n")
+Este programa irá calcular a média aritmética simples de 3 notas.
+''')
+    n1=float(input("Digite a primeira nota: "))
+    n2=float(input("Digite a segunda nota: "))
+    n3=float(input("Digite a terceira nota: "))
+    m = (n1+n2+n3)/3
+    print(f"A média é igual a {m:.2f}\n")
+    if m >=7:
+        print("Você está aprovado(a)!!!\n")
+    else:
+        print("Você está reprovado(a)!!!\n")
+
+    while True:
+            try:
+                escolha_continuar = int(input("Deseja Continuar, Voltar a lista ou Finalizar o programa?\n[1] - Continuar\n[2] - Retornar a Lista\n[3] - Finalizar Programa\n\n-> "))
+                if escolha_continuar == 1:
+                    opcao_um_cinco()
+                elif escolha_continuar == 2:
+                    menu_um()
+                elif escolha_continuar == 3:
+                    print("\nFinalizando programa ...\n")
+                    exit()
+                else:
+                    print("Opção Inválida, Tente Novamente")
+            except ValueError:
+                print("Insira uma entrada válida.")
 def opcao_um_seis(): #Aqui está a sexta questão da primeira lista
-    print('''~ Conversão de Temperatura ~
+    limpar_tela()
+    print(''' ~ Verificação PAR e ÍMPAR ~
     
-    Irá ser convertida o valor de °C para °F''')
-    celsius = float(input("Insira a tempera em °C a ser convertida: "))
-    fahrenheit = (celsius * 9/5) + 32
-    print(f"\n {celsius:.2f}°C em Fahrenheit é {fahrenheit:.2f}.\n")
+    Iremos verificar se o seu número é par ou é ímpar.''')
+    while True:
+        try:
+            numero = int(input("Digite um número inteiro: "))
+            resultado = numero%2
+            if resultado == 0:
+                print("\nO número é par.\n")
+                break
+            else:
+                print("\nO número é impar.\n")
+                break
+        except ValueError:
+            print("\nValor inválido, digite um número inteiro\n")
+    
+    while True:
+            try:
+                escolha_continuar = int(input("Deseja Continuar, Voltar a lista ou Finalizar o programa?\n[1] - Continuar\n[2] - Retornar a Lista\n[3] - Finalizar Programa\n\n-> "))
+                if escolha_continuar == 1:
+                    limpar_tela()
+                    opcao_um_seis()
+                elif escolha_continuar == 2:
+                    limpar_tela()
+                    menu_um()
+                elif escolha_continuar == 3:
+                    print("\nFinalizando programa ...\n")
+                    exit()
+                else:
+                    print("Opção Inválida, Tente Novamente")
+            except ValueError:
+                print("Insira uma entrada válida.")
 def opcao_um_sete(): #Aqui está a sétima questão da primeira lista
-    print('''~ Conversão de Temperatura ~
-    
-    Irá ser convertida o valor de °C para °F''')
-    celsius = float(input("Insira a tempera em °C a ser convertida: "))
-    fahrenheit = (celsius * 9/5) + 32
-    print(f"\n {celsius:.2f}°C em Fahrenheit é {fahrenheit:.2f}.\n")
+    while True:
+            try:
+                escolha_continuar = int(input("Deseja Continuar, Voltar a lista ou Finalizar o programa?\n[1] - Continuar\n[2] - Retornar a Lista\n[3] - Finalizar Programa\n\n-> "))
+                if escolha_continuar == 1:
+                    limpar_tela()
+                    opcao_um_sete()
+                elif escolha_continuar == 2:
+                    limpar_tela()
+                    menu_um()
+                elif escolha_continuar == 3:
+                    print("\nFinalizando programa ...\n")
+                    exit()
+                else:
+                    print("Opção Inválida, Tente Novamente")
+            except ValueError:
+                print("Insira uma entrada válida.")
 def opcao_um_oito(): #Aqui está a oitava questão da primeira lista
-    print('''~ Conversão de Temperatura ~
-    
-    Irá ser convertida o valor de °C para °F''')
-    celsius = float(input("Insira a tempera em °C a ser convertida: "))
-    fahrenheit = (celsius * 9/5) + 32
-    print(f"\n {celsius:.2f}°C em Fahrenheit é {fahrenheit:.2f}.\n")
-
-
+    while True:
+            try:
+                escolha_continuar = int(input("Deseja Continuar, Voltar a lista ou Finalizar o programa?\n[1] - Continuar\n[2] - Retornar a Lista\n[3] - Finalizar Programa\n\n-> "))
+                if escolha_continuar == 1:
+                    limpar_tela()
+                    opcao_um_oito()
+                elif escolha_continuar == 2:
+                    limpar_tela()
+                    menu_um()
+                elif escolha_continuar == 3:
+                    print("\nFinalizando programa ...\n")
+                    exit()
+                else:
+                    print("Opção Inválida, Tente Novamente")
+            except ValueError:
+                print("Insira uma entrada válida.")
 
 inicio()
