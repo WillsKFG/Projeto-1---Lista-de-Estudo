@@ -1,6 +1,3 @@
- #7. Cálculo de Fatorial: 
-#Crie um programa que solicite ao usuário um número inteiro positivo e calcule 
-#o fatorial desse número. 
 #8. Conversão de Horas para Minutos: 
 #Escreva um programa que solicite ao usuário uma quantidade de horas e 
 #converta esse valor para minutos.
@@ -424,6 +421,24 @@ def opcao_um_seis(): #Aqui está a sexta questão da primeira lista
             except ValueError:
                 print("Insira uma entrada válida.")
 def opcao_um_sete(): #Aqui está a sétima questão da primeira lista
+    print("\n Cálculo de Fatorial \n") #sim daria pra utilizar biblioteca
+    while True:
+        try:
+            numero = int(input("Digite um número inteiro e positivo para ser cálculado: "))
+            
+        except ValueError:
+            print("Valor inválido tente novamente")
+        if numero <0:
+            print("Valor Inválido")
+        else:
+            break
+    contador = 1
+    fatorial = numero
+    while(numero - contador)>1:
+        fatorial=fatorial*(numero - contador)
+        contador+=1
+    print(f"\n{numero}! = {fatorial}\n")
+    
     while True:
             try:
                 escolha_continuar = int(input("Deseja Continuar, Voltar a lista ou Finalizar o programa?\n[1] - Continuar\n[2] - Retornar a Lista\n[3] - Finalizar Programa\n\n-> "))
@@ -441,6 +456,15 @@ def opcao_um_sete(): #Aqui está a sétima questão da primeira lista
             except ValueError:
                 print("Insira uma entrada válida.")
 def opcao_um_oito(): #Aqui está a oitava questão da primeira lista
+    print("\n Conversor de Horas p/ minutos\n")
+    while True:
+        try:
+            horas = int(input("Digite a hora: "))
+            minutos = horas * 60
+            break
+        except ValueError:
+            print("Valor Inválido, tente novamente.")
+    print(f"\n{horas}h em minutos é {minutos}min\n")
     while True:
             try:
                 escolha_continuar = int(input("Deseja Continuar, Voltar a lista ou Finalizar o programa?\n[1] - Continuar\n[2] - Retornar a Lista\n[3] - Finalizar Programa\n\n-> "))
